@@ -21,6 +21,7 @@ class Form{
                 food.updateHunger(+5)
                 food.updateFoodStock(-1);
                 food.updateLastFed();
+                food.getLastFed();
             }
         }); 
 
