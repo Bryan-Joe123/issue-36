@@ -17,8 +17,18 @@ class Form{
         var feedButton=createButton("Feed");
         feedButton.position(width/2,10)
         feedButton.mousePressed(function(){
-            food.updateHunger(+5)
-            food.updateFoodStock(-1);
+            if(foodStock>0){
+                food.updateHunger(+5)
+                food.updateFoodStock(-1);
+                food.updateLastFed();
+            }
+        }); 
+
+        // Add Food button
+        var addFoodButton=createButton("Add Food");
+        addFoodButton.position(width/2+50,10)
+        addFoodButton.mousePressed(function(){
+            food.updateFoodStock(+1);
         }); 
     }
 }

@@ -10,6 +10,7 @@ class Food{
     getFoodStock(){
         var foodStockRef=database.ref('pet/foodStock');
         foodStockRef.on("value",function(data){
+            console.log(data.val());
             foodStock=data.val();
         });
     }
@@ -22,9 +23,19 @@ class Food{
     }
 
     updateFoodStock(amount){
-        console.log(foodStock);
         foodStock=foodStock+amount;
         database.ref('pet').update({foodStock:foodStock});
+    }
+
+    getLastFed(amount){
+        database.ref('pet').update({lastFed:hour()});
+    }
+
+    updateLastFed(amount){
+        var lastFedRef=database.ref('pet/lastFed');
+        lastFedRef.on("value",function(data){
+            lastFed=data.val();
+        });
     }
 
     updateHunger(amount){
