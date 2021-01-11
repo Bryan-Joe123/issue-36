@@ -5,13 +5,15 @@ var database, foodStock, dogName, lastFed;
 function preload(){
     happyDog=loadImage("Images/happydog.png");
     dog=loadImage("Images/Dog.png");
+
+    foodImage=loadImage("Images/Milk.png")
 }
 
 function setup(){
     createCanvas(800,500);
     database=firebase.database();
     foodStock=database.ref('pet/food');
-    food = new Food();
+    food = new Food(foodImage);
     food.getFoodStock();
     food.updateLastFed();
 
@@ -27,6 +29,8 @@ function draw(){
     textSize(20);
     fill("black");
     text(dogName+" the dog",550,175)
+
+    food.display();
 
     if(lastFed>=12){
         text("Last Fed: "+lastFed%12+"PM",250,30);

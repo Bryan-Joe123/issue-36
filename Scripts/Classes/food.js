@@ -1,10 +1,24 @@
 class Food{
-    constructor(){
-
+    constructor(image){
+        this.image=image;
     }
 
     display(){
+        var x=80,y=120;
 
+        imageMode(CENTER);
+        // image(this.image,720,220,70,70);
+
+        if(foodStock!=0){
+            for(var z=0;z<foodStock;z++){
+                if(z%10==0){
+                    x=80;
+                    y=y+50;
+                }
+                image(this.image,x,y,50,50);
+                x=x+30;
+            }
+        }
     }
 
     getFoodStock(){
